@@ -64,6 +64,13 @@ protected:
     void stopListening();
 
 public:
+    int hsKeepAliveTimeoutStart = 1000;
+    int hsKeepAliveTimeoutInterval = 1000;
+    void setHttpSocketKeepAlive(int start, int interval)
+    {
+        hsKeepAliveTimeoutStart = start;
+        hsKeepAliveTimeoutInterval = interval;
+    }
     void onConnection(std::function<void(WebSocket<isServer> *, HttpRequest)> handler);
     void onTransfer(std::function<void(WebSocket<isServer> *)> handler);
     void onMessage(std::function<void(WebSocket<isServer> *, char *, size_t, OpCode)> handler);

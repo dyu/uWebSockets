@@ -59,7 +59,7 @@ void Group<isServer>::addHttpSocket(HttpSocket<isServer> *httpSocket) {
                     httpSocket->missedDeadline = true;
                 }
             });
-        }, 1000, 1000);
+        }, hsKeepAliveTimeoutStart, hsKeepAliveTimeoutInterval);
     }
     httpSocketHead = httpSocket;
     httpSocket->prev = nullptr;
